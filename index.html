@@ -12,62 +12,31 @@
       height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #130f40;
-    }
-
-    #word-container {
-      font-size: 15em;
-      color: white; /* Set initial color */
-      user-select: none; /* Prevent text selection */
-      position: relative;
-      z-index: 2; /* Ensure the word container appears above the border */
-    }
-
-    #static-border {
-      position: absolute;
-      top: 15%; /* Adjust the top position as needed */
-      left: 10%; /* Adjust the left position as needed */
-      width: 80%; /* Adjust the width as needed */
-      height: 80%; /* Adjust the height as needed */
-      border: 10px #f5f6fa; /* Adjust border properties as needed */
-      background-color:#34495e; /* Adjust background color as needed */
-      z-index: 1; /* Ensure the border appears behind the word container */
-      border-radius: 10px; /* Adjust the border-radius for rounded corners */
-    }<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alphabet</title>
-  <style>
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
       background-color: #192a56;
     }
 
     #word-container {
-      font-size: 13em;
-      color: white; /* Set initial color */
-      user-select: none; /* Prevent text selection */
-      position: relative;
-      z-index: 2; /* Ensure the word container appears above the border */
+      font-size: 7em;
+      color: white;
+      user-select: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      cursor: pointer;
     }
 
     #static-border {
       position: absolute;
-      top: 10%; /* Adjust the top position as needed */
-      left: 10%; /* Adjust the left position as needed */
-      width: 80%; /* Adjust the width as needed */
-      height: 80%; /* Adjust the height as needed */
-      border: 8px solid #f5f6fa; /* Adjust border properties as needed */
-      background-color: #34495e; /* Adjust background color as needed */
-      z-index: 1; /* Ensure the border appears behind the word container */
-      border-radius: 10px; /* Adjust the border-radius for rounded corners */
+      top: 20%;
+      left: 10%;
+      width: 80%;
+      height: 60%;
+      border: 8px solid #f5f6fa;
+      background-color: #34495e;
+      z-index: 1;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -80,7 +49,7 @@
     var words = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q",
     "r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L"
     ,"M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-
+  
     // Array of specified colors
     var specifiedColors = ["blue", "red", "green", "yellow", "saddlebrown", "darkorange", "white"];
 
@@ -88,68 +57,27 @@
     function changeWord() {
       // Get a random index from the array
       var randomIndex = Math.floor(Math.random() * words.length);
-      
+
       // Get the word at the random index
       var randomWord = words[randomIndex];
-      
+
       // Get a random index for the specified colors
       var randomColorIndex = Math.floor(Math.random() * specifiedColors.length);
-      
+
       // Get the color at the random index
       var randomColor = specifiedColors[randomColorIndex];
-      
+
       // Display the random word and set the text color
-      document.getElementById("word-container").innerHTML = randomWord;
-      document.getElementById("word-container").style.color = randomColor;
+      var wordContainer = document.getElementById("word-container");
+      wordContainer.innerHTML = randomWord;
+      wordContainer.style.color = randomColor;
     }
 
     // Call the changeWord function on page load
     window.onload = changeWord;
-    
-    // Set up a click event listener to change the word on click
-    document.getElementById("word-container").addEventListener("click", changeWord);
-  </script>
-</body>
-</html>
 
-  </style>
-</head>
-<body>
-  <div id="static-border"></div>
-  <div id="word-container"></div>
-
-  <script>
-    // Array of words
-    var words = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q",
-    "r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L"
-    ,"M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-
-    // Array of specified colors
-    var specifiedColors = ["blue", "red", "green", "yellow", "saddlebrown", "darkorange", "white"];
-
-    // Function to change the word and text color
-    function changeWord() {
-      // Get a random index from the array
-      var randomIndex = Math.floor(Math.random() * words.length);
-      
-      // Get the word at the random index
-      var randomWord = words[randomIndex];
-      
-      // Get a random index for the specified colors
-      var randomColorIndex = Math.floor(Math.random() * specifiedColors.length);
-      
-      // Get the color at the random index
-      var randomColor = specifiedColors[randomColorIndex];
-      
-      // Display the random word and set the text color
-      document.getElementById("word-container").innerHTML = randomWord;
-      document.getElementById("word-container").style.color = randomColor;
-    }
-
-    // Call the changeWord function on page load
-    window.onload = changeWord;
-    
-    // Set up a click event listener to change the word on click
+    // Set up click event listeners to change the word on click
+    document.getElementById("static-border").addEventListener("click", changeWord);
     document.getElementById("word-container").addEventListener("click", changeWord);
   </script>
 </body>
